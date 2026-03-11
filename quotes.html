@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חכמת ישראל | ציטוטים מהגות ושירה יהודית</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:        #2A8C9E;
+    --teal-light:  #3AAFC4;
+    --teal-pale:   #E6F4F7;
+    --teal-mid:    #1C6E7D;
+    --green:       #4A9B6F;
+    --green-light: #6DBF8F;
+    --green-pale:  #EAF5EE;
+    --blue:        #3B7FC4;
+    --sand:        #F7F3EC;
+    --sand-dark:   #EDE6D8;
+    --sand-border: #D8CEBC;
+    --text-dark:   #1E3040;
+    --text-mid:    #3D5A6E;
+    --text-soft:   #6E8A99;
+    --white:       #FFFFFF;
+    --card-bg:     #FFFFFF;
+    --card-border: #DDE8EC;
+    --shadow:      rgba(42,140,158,0.10);
+    --gold:        #C8962A;
+    --gold-light:  #E8B84B;
+    --gold-pale:   #FDF6E3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--sand);
+    color: var(--text-dark);
+    font-family: 'Heebo', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse 100% 50% at 50% -5%, rgba(42,140,158,0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 100% 80%, rgba(74,155,111,0.05) 0%, transparent 60%);
+  }
+
+  /* ─── Header ─── */
+  .header {
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    background: linear-gradient(180deg, rgba(42,140,158,0.07) 0%, transparent 100%);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .header-ornament {
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.4rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .header h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .header h1 span {
+    color: var(--teal);
+  }
+
+  .header p {
+    font-size: 1rem;
+    color: var(--text-soft);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* ─── Sources chips ─── */
+  .sources-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.25rem 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .source-chip {
+    background: var(--teal-pale);
+    color: var(--teal-mid);
+    border: 1px solid rgba(42,140,158,0.2);
+    border-radius: 20px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .sefaria-chip {
+    background: var(--green-pale);
+    color: var(--green);
+    border-color: rgba(74,155,111,0.3);
+    font-weight: 600;
+  }
+
+  /* ─── Main ─── */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ─── Question Form ─── */
+  .question-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px var(--shadow);
+    margin-bottom: 2rem;
+  }
+
+  .question-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .question-input {
+    flex: 1;
+    border: 1.5px solid var(--sand-border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    font-family: 'Heebo', sans-serif;
+    color: var(--text-dark);
+    background: var(--sand);
+    resize: none;
+    min-height: 56px;
+    max-height: 140px;
+    line-height: 1.5;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    direction: rtl;
+  }
+
+  .question-input::placeholder {
+    color: var(--text-soft);
+    font-weight: 300;
+  }
+
+  .question-input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(42,140,158,0.12);
+    background: var(--white);
+  }
+
+  .ask-btn {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 0 1.5rem;
+    height: 56px;
+    font-size: 0.95rem;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 10px rgba(42,140,158,0.3);
+  }
+
+  .ask-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(42,140,158,0.4);
+  }
+
+  .ask-btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .ask-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  /* ─── Suggested questions ─── */
+  .suggestions {
+    margin-top: 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .suggestions-label {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    width: 100%;
+    margin-bottom: 0.1rem;
+  }
+
+  .suggestion-btn {
+    background: transparent;
+    border: 1px solid var(--sand-border);
+    border-radius: 20px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.82rem;
+    font-family: 'Heebo', sans-serif;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+
+  .suggestion-btn:hover {
+    background: var(--teal-pale);
+    border-color: var(--teal);
+    color: var(--teal-mid);
+  }
+
+  /* ─── Loading ─── */
+  .loading-area {
+    display: none;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .loading-area.visible {
+    display: block;
+  }
+
+  .loader-dots {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .loader-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: bounce 1.2s infinite ease-in-out;
+  }
+
+  .loader-dot:nth-child(1) { animation-delay: 0s; }
+  .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.6; }
+    40% { transform: translateY(-10px); opacity: 1; }
+  }
+
+  .loading-text {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+  }
+
+  /* ─── Quote Card ─── */
+  .quote-area {
+    display: none;
+  }
+
+  .quote-area.visible {
+    display: block;
+    animation: fadeUp 0.45s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .quote-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 32px rgba(42,140,158,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+  }
+
+  .quote-card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--teal) 50%, var(--green) 100%);
+  }
+
+  .quote-inner {
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+  }
+
+  .quote-mark-open {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 5rem;
+    color: var(--gold-light);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+    user-select: none;
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif Hebrew', serif;
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--text-dark);
+    white-space: pre-wrap;
+    margin-bottom: 1.75rem;
+  }
+
+  .quote-attribution {
+    border-top: 1px solid var(--sand-border);
+    padding-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .attr-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--teal-pale), var(--gold-pale));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .attr-texts {
+    flex: 1;
+  }
+
+  .attr-author {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--teal-mid);
+    display: block;
+  }
+
+  .attr-source {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    display: block;
+    margin-top: 0.1rem;
+    font-style: italic;
+  }
+
+  .share-btn {
+    background: var(--teal-pale);
+    border: 1px solid rgba(42,140,158,0.2);
+    border-radius: 8px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem;
+    font-family: 'Heebo', sans-serif;
+    color: var(--teal-mid);
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .share-btn:hover {
+    background: rgba(42,140,158,0.2);
+  }
+
+  .ask-again-row {
+    margin-top: 1.25rem;
+    text-align: center;
+  }
+
+  .ask-again-btn {
+    background: transparent;
+    border: 1.5px solid var(--teal);
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    font-family: 'Heebo', sans-serif;
+    color: var(--teal);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    font-weight: 600;
+  }
+
+  .ask-again-btn:hover {
+    background: var(--teal-pale);
+  }
+
+  /* ─── Error ─── */
+  .error-area {
+    display: none;
+    background: #FFF5F5;
+    border: 1px solid #FEB2B2;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    color: #C53030;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .error-area.visible {
+    display: block;
+    animation: fadeUp 0.3s ease-out;
+  }
+
+  /* ─── History ─── */
+  .history-section {
+    margin-top: 2.5rem;
+  }
+
+  .history-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .history-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sand-border);
+  }
+
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .history-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-color 0.15s;
+    position: relative;
+  }
+
+  .history-item:hover {
+    border-color: var(--teal);
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  .history-q {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    margin-bottom: 0.35rem;
+    font-style: italic;
+  }
+
+  .history-q::before { content: '« '; }
+  .history-q::after  { content: ' »'; }
+
+  .history-quote-preview {
+    font-family: 'Noto Serif Hebrew', serif;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .history-author {
+    font-size: 0.78rem;
+    color: var(--teal-mid);
+    margin-top: 0.4rem;
+    font-weight: 600;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--card-border);
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 600px) {
+    .input-row { flex-direction: column; }
+    .ask-btn { width: 100%; justify-content: center; }
+    .quote-inner { padding: 1.75rem 1.25rem 1.5rem; }
+    .quote-text { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-ornament">✦ ✦ ✦</div>
+  <h1>חכמת <span>ישראל</span></h1>
+  <p>שאל שאלה — וקבל ציטוט מקורי מהגות ומשירה יהודית</p>
+  <div class="sources-row">
+    <span class="source-chip sefaria-chip">📚 ספריא</span>
+    <span class="source-chip">תנ"ך · תלמוד · מדרש</span>
+    <span class="source-chip">זוהר · תניא</span>
+    <span class="source-chip">הרב יהונתן זקס</span>
+    <span class="source-chip">הרב קוק</span>
+    <span class="source-chip">אברהם יהושע השל</span>
+    <span class="source-chip">מרטין בובר</span>
+    <span class="source-chip">רחל המשוררת</span>
+    <span class="source-chip">לאה גולדברג</span>
+    <span class="source-chip">נתן אלתרמן</span>
+    <span class="source-chip">יהודה עמיחי</span>
+    <span class="source-chip">ביאליק</span>
+    <span class="source-chip">זלדה</span>
+    <span class="source-chip">ש"י עגנון</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- שאלה -->
+  <section class="question-card">
+    <label class="question-label" for="questionInput">מה שואל לבך?</label>
+    <div class="input-row">
+      <textarea
+        id="questionInput"
+        class="question-input"
+        placeholder="כתוב כאן שאלה, נושא או מצב שאתה חווה..."
+        rows="1"
+      ></textarea>
+      <button class="ask-btn" id="askBtn" onclick="askQuestion()">
+        <span>חפש ציטוט</span>
+        <span>←</span>
+      </button>
+    </div>
+    <div class="suggestions">
+      <span class="suggestions-label">לדוגמה:</span>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">מהו ייעודו של האדם?</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">על אהבה ואחריות</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">בדידות ומשמעות</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">זהות יהודית</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">תקווה בזמנים קשים</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">מהי אמונה?</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">שבת ומנוחה</button>
+      <button class="suggestion-btn" onclick="fillSuggestion(this)">חינוך ילדים</button>
+    </div>
+  </section>
+
+  <!-- Loading -->
+  <div class="loading-area" id="loadingArea">
+    <div class="loader-dots">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+    <p class="loading-text">מחפש ציטוט מתאים מאוצרות הגות ישראל…</p>
+  </div>
+
+  <!-- שגיאה -->
+  <div class="error-area" id="errorArea"></div>
+
+  <!-- ציטוט -->
+  <div class="quote-area" id="quoteArea">
+    <div class="quote-card" id="quoteCard">
+      <div class="quote-inner">
+        <span class="quote-mark-open">"</span>
+        <p class="quote-text" id="quoteText"></p>
+        <div class="quote-attribution">
+          <div class="attr-icon">✍️</div>
+          <div class="attr-texts">
+            <span class="attr-author" id="attrAuthor"></span>
+            <span class="attr-source" id="attrSource"></span>
+          </div>
+          <button class="share-btn" onclick="copyQuote()" id="copyBtn">
+            <span>📋</span>
+            <span>העתק</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="ask-again-row">
+      <button class="ask-again-btn" onclick="askAgain()">⟳ ציטוט אחר לאותה שאלה</button>
+    </div>
+  </div>
+
+  <!-- היסטוריה -->
+  <section class="history-section" id="historySection" style="display:none">
+    <div class="history-title">ציטוטים קודמים</div>
+    <div class="history-list" id="historyList"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  מבוסס על <a href="index.html">מקורות תורניים</a> ·
+  טקסטים קלאסיים מ<a href="https://www.sefaria.org.il/texts" target="_blank" rel="noopener">ספריא</a> ·
+  הציטוטים נבחרים בסיוע בינה מלאכותית — יש לאמת מול המקור המקורי
+</footer>
+
+<script>
+  const API_URL = '/api/quote';
+  let lastQuestion = '';
+  const history = [];
+
+  const questionInput = document.getElementById('questionInput');
+  const askBtn       = document.getElementById('askBtn');
+  const loadingArea  = document.getElementById('loadingArea');
+  const errorArea    = document.getElementById('errorArea');
+  const quoteArea    = document.getElementById('quoteArea');
+
+  // Auto-resize textarea
+  questionInput.addEventListener('input', () => {
+    questionInput.style.height = 'auto';
+    questionInput.style.height = Math.min(questionInput.scrollHeight, 140) + 'px';
+  });
+
+  questionInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      askQuestion();
+    }
+  });
+
+  function fillSuggestion(btn) {
+    questionInput.value = btn.textContent;
+    questionInput.style.height = 'auto';
+    questionInput.focus();
+  }
+
+  function showLoading() {
+    loadingArea.classList.add('visible');
+    quoteArea.classList.remove('visible');
+    errorArea.classList.remove('visible');
+    askBtn.disabled = true;
+  }
+
+  function hideLoading() {
+    loadingArea.classList.remove('visible');
+    askBtn.disabled = false;
+  }
+
+  function showError(msg) {
+    errorArea.textContent = '⚠ ' + msg;
+    errorArea.classList.add('visible');
+  }
+
+  function showQuote(quote, author, source) {
+    document.getElementById('quoteText').textContent   = quote;
+    document.getElementById('attrAuthor').textContent  = author || '';
+    document.getElementById('attrSource').textContent  = source || '';
+    quoteArea.classList.add('visible');
+  }
+
+  async function askQuestion() {
+    const question = questionInput.value.trim();
+    if (!question) {
+      questionInput.focus();
+      return;
+    }
+
+    lastQuestion = question;
+    showLoading();
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+
+      const data = await res.json();
+      hideLoading();
+
+      if (!res.ok || data.error) {
+        showError(data.error || 'שגיאה לא צפויה, נסה שוב.');
+        return;
+      }
+
+      showQuote(data.quote, data.author, data.source);
+      addToHistory(question, data.quote, data.author);
+
+    } catch (err) {
+      hideLoading();
+      showError('שגיאת תקשורת — ודא שהשרת פועל ונסה שוב.');
+      console.error(err);
+    }
+  }
+
+  function askAgain() {
+    if (lastQuestion) {
+      askQuestion();
+    }
+  }
+
+  function copyQuote() {
+    const text = document.getElementById('quoteText').textContent;
+    const author = document.getElementById('attrAuthor').textContent;
+    const source = document.getElementById('attrSource').textContent;
+    const full = `"${text}"\n— ${author}${source ? ', ' + source : ''}`;
+
+    navigator.clipboard.writeText(full).then(() => {
+      const btn = document.getElementById('copyBtn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span>✓</span><span>הועתק!</span>';
+      setTimeout(() => { btn.innerHTML = orig; }, 1800);
+    });
+  }
+
+  function addToHistory(question, quote, author) {
+    history.unshift({ question, quote, author });
+    if (history.length > 6) history.pop();
+    renderHistory();
+  }
+
+  function renderHistory() {
+    if (history.length < 2) return;
+    const section = document.getElementById('historySection');
+    const list    = document.getElementById('historyList');
+    section.style.display = 'block';
+    list.innerHTML = '';
+
+    history.slice(1).forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'history-item';
+      div.innerHTML = `
+        <div class="history-q">${escHtml(item.question)}</div>
+        <div class="history-quote-preview">${escHtml(item.quote)}</div>
+        <div class="history-author">${escHtml(item.author)}</div>
+      `;
+      div.onclick = () => {
+        questionInput.value = item.question;
+        showQuote(item.quote, item.author, '');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+      list.appendChild(div);
+    });
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
+</body>
+</html>
