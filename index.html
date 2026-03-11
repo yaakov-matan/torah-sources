@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מקורות תורניים | שלוחי ציבור</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:        #2A8C9E;
+    --teal-light:  #3AAFC4;
+    --teal-pale:   #E6F4F7;
+    --teal-mid:    #1C6E7D;
+    --green:       #4A9B6F;
+    --green-light: #6DBF8F;
+    --green-pale:  #EAF5EE;
+    --blue:        #3B7FC4;
+    --blue-light:  #5B9FE4;
+    --sand:        #F7F3EC;
+    --sand-dark:   #EDE6D8;
+    --sand-border: #D8CEBC;
+    --text-dark:   #1E3040;
+    --text-mid:    #3D5A6E;
+    --text-soft:   #6E8A99;
+    --white:       #FFFFFF;
+    --card-bg:     #FFFFFF;
+    --card-border: #DDE8EC;
+    --shadow:      rgba(42,140,158,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--sand);
+    color: var(--text-dark);
+    font-family: 'Heebo', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse 100% 50% at 50% -5%, rgba(42,140,158,0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 100% 80%, rgba(74,155,111,0.05) 0%, transparent 60%);
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    background: linear-gradient(180deg, rgba(42,140,158,0.07) 0%, transparent 100%);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  }
+
+  .star-of-david {
+    margin-bottom: 0.9rem;
+    filter: drop-shadow(0 4px 16px rgba(42,140,158,0.25));
+    animation: glow-pulse 4s ease-in-out infinite;
+    display: block;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { filter: drop-shadow(0 4px 12px rgba(42,140,158,0.2)); }
+    50% { filter: drop-shadow(0 4px 24px rgba(42,140,158,0.45)); }
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif Hebrew', serif;
+    font-size: clamp(1.7rem, 5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--teal-mid);
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .header p {
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    font-weight: 400;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Main container */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  /* Input section */
+  .input-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 20px var(--shadow);
+  }
+
+  .input-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--green), var(--blue));
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--teal-mid);
+    letter-spacing: 0.04em;
+  }
+
+  /* Floating label pattern */
+  .float-group {
+    position: relative;
+  }
+
+  .float-group input {
+    padding-top: 1.35rem;
+    padding-bottom: 0.45rem;
+  }
+
+  .float-group > label {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-soft);
+    pointer-events: none;
+    transition: all 0.18s ease;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  /* Floated state: when input has value or is focused */
+  .float-group input:focus ~ label,
+  .float-group input:not(:placeholder-shown) ~ label {
+    top: 0.5rem;
+    transform: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+  }
+
+  .field-hint {
+    font-size: 0.73rem;
+    color: var(--text-soft);
+    margin-top: 0.25rem;
+    opacity: 0.75;
+    display: block;
+    padding-right: 0.25rem;
+  }
+
+  /* Static label for textarea */
+  .static-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--teal-mid);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+
+  input, textarea, select {
+    background: var(--sand);
+    border: 1px solid var(--sand-border);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--teal-light);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(42,140,158,0.1);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--text-soft);
+    opacity: 0.65;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+  }
+
+  select option {
+    background: white;
+    color: var(--text-dark);
+  }
+
+  /* Tags for quick topics */
+  .tags-section {
+    margin-bottom: 1.25rem;
+  }
+
+  .tags-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--teal-mid);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .tags-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .tag {
+    background: var(--teal-pale);
+    border: 1px solid rgba(42,140,158,0.2);
+    border-radius: 20px;
+    color: var(--teal-mid);
+    cursor: pointer;
+    font-size: 0.82rem;
+    padding: 0.28rem 0.85rem;
+    transition: all 0.18s;
+    user-select: none;
+    font-weight: 500;
+  }
+
+  .tag:hover, .tag.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+
+  /* Search button */
+  .search-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--teal-mid), var(--teal-light));
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Noto Serif Hebrew', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    transition: all 0.3s;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 14px rgba(42,140,158,0.3);
+  }
+
+  .search-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(42,140,158,0.4);
+  }
+
+  .search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Loading */
+  .loading-state {
+    display: none;
+    text-align: center;
+    padding: 3rem;
+  }
+
+  .loading-state.visible { display: block; }
+
+  .loading-spinner {
+    width: 50px; height: 50px;
+    border: 3px solid rgba(42,140,158,0.12);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1.5rem;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    animation: fade-cycle 2s ease-in-out infinite;
+  }
+
+  @keyframes fade-cycle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* Results */
+  .results-container {
+    display: none;
+  }
+
+  .results-container.visible { display: block; }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .results-header h2 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.4rem;
+    color: var(--teal-mid);
+  }
+
+  .results-count {
+    background: var(--teal-pale);
+    border: 1px solid rgba(42,140,158,0.25);
+    border-radius: 20px;
+    color: var(--teal);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+  }
+
+  /* Source card */
+  .source-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    animation: card-enter 0.4s ease both;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  @keyframes card-enter {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .source-card:hover {
+    border-color: rgba(42,140,158,0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(42,140,158,0.12);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem 1rem;
+    background: linear-gradient(135deg, var(--teal-pale) 0%, white 100%);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .source-icon {
+    background: linear-gradient(135deg, var(--teal-mid), var(--teal-light));
+    border-radius: 10px;
+    color: white;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(42,140,158,0.25);
+  }
+
+  .source-meta {
+    flex: 1;
+  }
+
+  .source-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+
+  .source-ref {
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .source-type-badge {
+    background: var(--green-pale);
+    border: 1px solid rgba(74,155,111,0.3);
+    border-radius: 6px;
+    color: var(--green);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .quote-block {
+    background: var(--sand);
+    border-right: 3px solid var(--teal);
+    border-radius: 4px;
+    color: var(--text-mid);
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.9rem;
+    font-style: italic;
+  }
+
+  .explanation {
+    color: var(--text-mid);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+  }
+
+  .connection-block {
+    background: var(--teal-pale);
+    border: 1px solid rgba(42,140,158,0.18);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+
+  .connection-label {
+    font-size: 0.72rem;
+    color: var(--teal);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+
+  .connection-text {
+    color: var(--text-dark);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* Export toolbar */
+  .export-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: white;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .export-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--teal-mid);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .export-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--sand);
+    border: 1px solid var(--sand-border);
+    border-radius: 8px;
+    color: var(--text-mid);
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.38rem 0.75rem;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .export-btn:hover {
+    background: var(--teal-pale);
+    border-color: rgba(42,140,158,0.3);
+    color: var(--teal-mid);
+    transform: translateY(-1px);
+  }
+  .export-btn-green:hover {
+    background: var(--green-pale);
+    border-color: rgba(74,155,111,0.3);
+    color: var(--green);
+  }
+  .export-btn-slides:hover {
+    background: #FFF4E6;
+    border-color: rgba(230,140,50,0.3);
+    color: #B85C00;
+  }
+  .export-btn-share {
+    background: var(--teal-pale);
+    border-color: rgba(42,140,158,0.25);
+    color: var(--teal);
+    font-weight: 600;
+  }
+  .export-btn-share:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+  .export-btn-copy-all:hover {
+    background: #F0F4FF;
+    border-color: rgba(59,127,196,0.3);
+    color: var(--blue);
+  }
+  .export-divider {
+    width: 1px;
+    height: 22px;
+    background: var(--sand-border);
+    margin: 0 0.2rem;
+  }
+  .export-icon { font-size: 0.9rem; }
+
+  /* Share toast */
+  .share-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--teal-mid);
+    color: white;
+    border-radius: 10px;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 999;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(28,110,125,0.4);
+  }
+  .share-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Export loading overlay */
+  .export-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30,48,64,0.45);
+    backdrop-filter: blur(4px);
+    z-index: 1001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .export-overlay.show { display: flex; }
+  .export-overlay-box {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(30,48,64,0.2);
+  }
+  .export-overlay-spinner {
+    width: 40px; height: 40px;
+    border: 3px solid var(--teal-pale);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+  }
+  .export-overlay-text {
+    color: var(--teal-mid);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .card-footer {
+    border-top: 1px solid var(--card-border);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    background: var(--sand);
+  }
+
+  .copy-btn {
+    background: white;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    color: var(--text-soft);
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.85rem;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: var(--teal-pale);
+  }
+
+  /* Error */
+  .error-state {
+    display: none;
+    background: #FFF0F0;
+    border: 1px solid #FFCDD2;
+    border-radius: 12px;
+    color: #C62828;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+
+  .error-state.visible { display: block; }
+
+  /* Footer */
+  .app-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-soft);
+    font-size: 0.78rem;
+    border-top: 1px solid var(--card-border);
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0 1.25rem;
+    color: var(--text-soft);
+    font-size: 0.78rem;
+    opacity: 0.6;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--card-border);
+  }
+  /* Sefaria integration */
+  .sefaria-quote-block { margin-bottom: 0.9rem; }
+  .sefaria-badge {
+    font-size: 0.72rem;
+    color: var(--green);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+  }
+  .sefaria-text {
+    border-right-color: var(--green);
+    background: var(--green-pale);
+  }
+  .sefaria-link-btn {
+    background: var(--green-pale);
+    border: 1px solid rgba(74,155,111,0.3);
+    border-radius: 6px;
+    color: var(--green);
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+  }
+  .sefaria-link-btn:hover {
+    background: rgba(74,155,111,0.18);
+    border-color: var(--green);
+    color: #2D7A50;
+  }
+
+  .hebrewbooks-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: #FFF8EC;
+    border: 1px solid #E8C97A;
+    border-radius: 8px;
+    color: #8B6000;
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.18s;
+  }
+  .hebrewbooks-link-btn:hover {
+    background: #FFF0CC;
+    border-color: #C8900A;
+    color: #5C3D00;
+    transform: translateY(-1px);
+  }
+
+
+  .source-type-section {
+    margin-bottom: 1.25rem;
+  }
+  .source-type-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+  }
+  @media (max-width: 700px) {
+    .source-type-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 450px) {
+    .source-type-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .source-type-option {
+    cursor: pointer;
+    display: block;
+  }
+  .source-type-option input[type="checkbox"] {
+    display: none;
+  }
+  .source-type-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--sand);
+    border: 1.5px solid var(--sand-border);
+    border-radius: 10px;
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .source-type-option input:checked + .source-type-card {
+    background: var(--teal-pale);
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px rgba(42,140,158,0.15);
+  }
+  .source-type-card:hover {
+    border-color: var(--teal-light);
+    background: var(--teal-pale);
+  }
+  .source-type-emoji { font-size: 1.3rem; }
+  .source-type-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .source-type-option input:checked + .source-type-card .source-type-name {
+    color: var(--teal-mid);
+  }
+  .source-type-desc {
+    font-size: 0.72rem;
+    color: var(--text-soft);
+  }
+
+
+  /* Vision field with integrated attach toolbar */
+  .vision-wrapper {
+    position: relative;
+    border: 1px solid var(--sand-border);
+    border-radius: 8px;
+    background: var(--sand);
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+  }
+  .vision-wrapper.drag-over {
+    border-color: var(--teal-light);
+    background: var(--teal-pale);
+  }
+  .vision-wrapper:focus-within {
+    border-color: var(--teal-light);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(42,140,158,0.1);
+  }
+  .vision-wrapper textarea {
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-bottom: 0.4rem;
+  }
+  .vision-wrapper textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+  }
+  .attach-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.8rem;
+    border-top: 1px solid var(--sand-border);
+    background: var(--sand-dark);
+    flex-wrap: wrap;
+  }
+  .attach-label {
+    font-size: 0.7rem;
+    color: var(--text-soft);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-left: 0.15rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+  .attach-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: white;
+    border: 1px solid var(--sand-border);
+    border-radius: 20px;
+    color: var(--text-mid);
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.22rem 0.65rem;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .attach-pill:hover {
+    background: var(--teal-pale);
+    border-color: rgba(42,140,158,0.35);
+    color: var(--teal-mid);
+  }
+  .attach-pill-drive:hover {
+    background: #EEF3FF;
+    border-color: rgba(66,133,244,0.35);
+    color: #3B5FC0;
+  }
+
+  .file-attached {
+    border-top: 1px solid rgba(42,140,158,0.2);
+    background: var(--teal-pale);
+    padding: 0.45rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .file-icon { font-size: 0.9rem; }
+  .file-name { flex: 1; color: var(--teal-mid); font-size: 0.8rem; font-weight: 600; word-break: break-all; }
+  .remove-file {
+    background: none;
+    border: none;
+    color: var(--text-soft);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0.1rem 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+  .remove-file:hover { color: #C62828; }
+
+  /* GDrive modal */
+  .gdrive-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,48,64,0.55);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .gdrive-modal-overlay.open { display: flex; }
+  .gdrive-modal {
+    background: white;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    width: min(480px, 95vw);
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(30,48,64,0.2);
+  }
+  .gdrive-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--card-border);
+    background: var(--sand);
+  }
+  .gdrive-modal-header h3 {
+    font-family: 'Frank Ruhl Libre', serif;
+    color: var(--teal-mid);
+    font-size: 1.1rem;
+    flex: 1;
+  }
+  .gdrive-close {
+    background: none; border: none;
+    color: var(--text-soft); cursor: pointer;
+    font-size: 1.2rem; line-height: 1;
+    padding: 0.2rem;
+    transition: color 0.2s;
+  }
+  .gdrive-close:hover { color: var(--text-dark); }
+  .gdrive-body { padding: 1.25rem 1.5rem; overflow-y: auto; flex: 1; }
+  .gdrive-step {
+    display: none;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .gdrive-step.active { display: flex; }
+  .gdrive-label {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .gdrive-input {
+    background: var(--sand);
+    border: 1px solid var(--sand-border);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    direction: ltr;
+  }
+  .gdrive-input:focus {
+    outline: none;
+    border-color: #4285F4;
+    box-shadow: 0 0 0 3px rgba(66,133,244,0.12);
+  }
+  .gdrive-fetch-btn {
+    background: linear-gradient(135deg, #3367D6, #4285F4);
+    border: none; border-radius: 8px;
+    color: #fff; cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+    box-shadow: 0 3px 10px rgba(66,133,244,0.3);
+  }
+  .gdrive-fetch-btn:hover:not(:disabled) { opacity: 0.88; }
+  .gdrive-fetch-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .gdrive-status {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    min-height: 1.2rem;
+  }
+  .gdrive-status.error { color: #C62828; }
+  .gdrive-status.success { color: var(--green); }
+  .gdrive-help {
+    background: #EEF3FF;
+    border: 1px solid rgba(66,133,244,0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    color: #3B5FC0;
+    line-height: 1.6;
+    direction: rtl;
+  }
+  .gdrive-help b { color: #1A3A8F; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="star-of-david"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" viewBox="0 0 80 60" fill="none">
+    <!-- Left page -->
+    <path d="M40 12 Q30 10 18 12 Q10 14 8 18 L8 50 Q10 47 18 45 Q30 43 40 46 Z" fill="#E8F4F7" stroke="#2A8C9E" stroke-width="1.2"/>
+    <!-- Right page -->
+    <path d="M40 12 Q50 10 62 12 Q70 14 72 18 L72 50 Q70 47 62 45 Q50 43 40 46 Z" fill="#F7F3EC" stroke="#2A8C9E" stroke-width="1.2"/>
+    <!-- Spine shadow -->
+    <path d="M40 12 L40 46" stroke="#1C6E7D" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Left page lines -->
+    <line x1="15" y1="22" x2="36" y2="20" stroke="#B0C8D0" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="15" y1="28" x2="36" y2="27" stroke="#B0C8D0" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="15" y1="34" x2="36" y2="33" stroke="#B0C8D0" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="15" y1="40" x2="36" y2="39" stroke="#B0C8D0" stroke-width="1" stroke-linecap="round"/>
+    <!-- Right page lines -->
+    <line x1="44" y1="20" x2="65" y2="22" stroke="#C8BBA8" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="44" y1="27" x2="65" y2="28" stroke="#C8BBA8" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="44" y1="33" x2="65" y2="34" stroke="#C8BBA8" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="44" y1="39" x2="65" y2="40" stroke="#C8BBA8" stroke-width="1" stroke-linecap="round"/>
+    <!-- Cover bottom curve -->
+    <path d="M8 50 Q10 54 18 53 Q30 51 40 54 Q50 51 62 53 Q70 54 72 50" stroke="#2A8C9E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </svg></span>
+  <h1>מקורות תורניים למעשה המנהיגות</h1>
+  <p>מנוע חיפוש למקורות תורניים לביסוס ערכי יהודי עבור הפרויקט האישי</p>
+  <p style="margin-top:0.4rem; font-size:0.8rem; color:var(--text-soft); opacity:0.7;">פותח ע״י יעקב מתן</p>
+</div>
+
+<div class="container">
+
+  <div class="input-card">
+    <div class="form-grid">
+
+      <div class="form-group float-group">
+        <input type="text" id="projectTitle" placeholder=" " autocomplete="off">
+        <label for="projectTitle">הפרויקט שלי עוסק ב...</label>
+        <span class="field-hint">לדוגמה: בריאות הנפש בקהילה החרדית</span>
+      </div>
+      <input type="hidden" id="authorName" value="">
+
+      <div class="form-group full-width">
+        <label class="static-label" for="projectDesc">מה החזון שלך?</label>
+        <div class="vision-wrapper">
+          <textarea id="projectDesc" placeholder="מה המצב הקיים?&#10;מה המצב הרצוי?&#10;מי קהל היעד של הפרויקט שלך?&#10;ככל שהפירוט גדול יותר, כך המקורות יהיו מדויקים יותר"></textarea>
+          <div class="attach-toolbar" id="attachToolbar">
+            <span class="attach-label">אפשר גם לצרף מסמך:</span>
+            <input type="file" id="fileInput" accept=".pdf,.docx,.doc" style="display:none" onchange="handleFileSelect(event)">
+            <button class="attach-pill" onclick="document.getElementById('fileInput').click()" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" title="צרף קובץ PDF או Word">
+              <span>📎</span> PDF / Word
+            </button>
+            <button class="attach-pill attach-pill-drive" onclick="openGdriveModal()" title="צרף מ-Google Drive">
+              <svg width="14" height="12" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+                <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+                <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+              </svg>
+              Google Drive
+            </button>
+          </div>
+          <div class="file-attached" id="fileAttached" style="display:none">
+            <span class="file-icon">📄</span>
+            <span class="file-name" id="fileName"></span>
+            <button class="remove-file" onclick="removeFile()">✕</button>
+          </div>
+        </div>
+
+<!-- Google Drive Modal -->
+<div class="gdrive-modal-overlay" id="gdriveOverlay" onclick="if(event.target===this)closeGdriveModal()">
+  <div class="gdrive-modal">
+    <div class="gdrive-modal-header">
+      <svg class="gdrive-logo" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg">
+        <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+        <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+        <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+        <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+        <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+        <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+      </svg>
+      <h3>צירוף מ-Google Drive</h3>
+      <button class="gdrive-close" onclick="closeGdriveModal()">✕</button>
+    </div>
+    <div class="gdrive-body">
+      <div class="gdrive-step active" id="gdriveStep1">
+        <div class="gdrive-help">
+          <b>כיצד לקבל קישור לשיתוף:</b><br>
+          1. פתח את הקובץ ב-Google Drive<br>
+          2. לחץ "שתף" ← "כל מי שיש לו קישור"<br>
+          3. העתק את הקישור והדבק כאן
+        </div>
+        <label class="gdrive-label">הדבק קישור לקובץ מ-Google Drive:</label>
+        <input class="gdrive-input" id="gdriveUrl" type="text" placeholder="https://drive.google.com/file/d/..." dir="ltr">
+        <button class="gdrive-fetch-btn" id="gdriveFetchBtn" onclick="fetchGdriveFile()">טען קובץ</button>
+        <div class="gdrive-status" id="gdriveStatus"></div>
+      </div>
+      <div class="gdrive-step" id="gdriveStep2">
+        <div class="gdrive-help" style="border-color:rgba(201,168,76,0.3); background:rgba(201,168,76,0.06); color:var(--gold-light);">
+          <b>⚠️ לא ניתן לטעון את הקובץ ישירות</b><br>
+          גוגל דרייב חוסם גישה ישירה מהדפדפן.<br>
+          <b>חלופה:</b> פתח את הקובץ בגוגל ← בחר הכל (Ctrl+A) ← העתק (Ctrl+C) ← הדבק כאן:
+        </div>
+        <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+          <a id="gdriveOpenLink" href="#" target="_blank" rel="noopener" class="gdrive-fetch-btn" style="text-decoration:none; font-size:0.82rem; padding:0.5rem 1rem;">
+            🔗 פתח קובץ בגוגל דרייב
+          </a>
+          <button class="gdrive-fetch-btn" style="background:rgba(255,255,255,0.08); font-size:0.82rem; padding:0.5rem 1rem;" onclick="showStep(1)">← חזור</button>
+        </div>
+        <textarea class="gdrive-input" id="gdriveText" rows="7" placeholder="הדבק כאן את תוכן הפרויקט..." dir="rtl" style="resize:vertical; line-height:1.6;"></textarea>
+        <button class="gdrive-fetch-btn" onclick="attachGdriveText()">✓ צרף טקסט</button>
+        <div class="gdrive-status" id="gdriveStatus2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="tags-section">
+      <span class="tags-label">לבחירה מהירה</span>
+      <div class="tags-grid">
+        <span class="tag" onclick="selectTag(this)">בריאות הנפש</span>
+        <span class="tag" onclick="selectTag(this)">נוער מתמודד</span>
+        <span class="tag" onclick="selectTag(this)">שידוכים</span>
+        <span class="tag" onclick="selectTag(this)">אפליה</span>
+        <span class="tag" onclick="selectTag(this)">רווחה וקהילה</span>
+        <span class="tag" onclick="selectTag(this)">חינוך</span>
+        <span class="tag" onclick="selectTag(this)">כלכלה ופרנסה</span>
+        <span class="tag" onclick="selectTag(this)">הגות חרדית</span>
+        <span class="tag" onclick="selectTag(this)">מנהיגות ציבורית</span>
+        <span class="tag" onclick="selectTag(this)">זהות חרדית</span>
+      </div>
+    </div>
+
+    <div class="source-type-section">
+      <span class="tags-label">סוג המקור המבוקש</span>
+      <div class="source-type-grid">
+        <label class="source-type-option">
+          <input type="checkbox" name="sourceType" value="פסוק" checked>
+          <span class="source-type-card">
+            <span class="source-type-emoji">📖</span>
+            <span class="source-type-name">פסוק</span>
+            <span class="source-type-desc">תורה, נביאים, כתובים</span>
+          </span>
+        </label>
+        <label class="source-type-option">
+          <input type="checkbox" name="sourceType" value="מאמר חז״ל" checked>
+          <span class="source-type-card">
+            <span class="source-type-emoji">🕯️</span>
+            <span class="source-type-name">מאמר חז״ל</span>
+            <span class="source-type-desc">גמרא, מדרש, משנה</span>
+          </span>
+        </label>
+        <label class="source-type-option">
+          <input type="checkbox" name="sourceType" value="פיסקה מספרי האחרונים" checked>
+          <span class="source-type-card">
+            <span class="source-type-emoji">📜</span>
+            <span class="source-type-name">ספרי האחרונים</span>
+            <span class="source-type-desc">פוסקים, מחשבה, חסידות</span>
+          </span>
+        </label>
+        <label class="source-type-option">
+          <input type="checkbox" name="sourceType" value="אגרות משה" checked>
+          <span class="source-type-card">
+            <span class="source-type-emoji">✉️</span>
+            <span class="source-type-name">אגרות משה</span>
+            <span class="source-type-desc">הרב משה פיינשטיין</span>
+          </span>
+        </label>
+        <label class="source-type-option">
+          <input type="checkbox" name="sourceType" value="ספרי HebrewBooks" checked>
+          <span class="source-type-card">
+            <span class="source-type-emoji">📚</span>
+            <span class="source-type-name">HebrewBooks</span>
+            <span class="source-type-desc">מאגר ספרי קודש</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <button class="search-btn" id="searchBtn" onclick="findSources()">
+      🔍 חבר אותי למקורות
+    </button>
+  </div>
+
+  <div class="loading-state" id="loadingState">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">מחפש במקורות התורה, הגמרא, הפוסקים...<br><span style="font-size:0.85em; opacity:0.75;">(תורתנו הקדושה רחבה מיני ים, אז זה עלול לקחת דקה)</span></p>
+  </div>
+
+  <div class="error-state" id="errorState">
+    שגיאה בחיפוש. אנא בדוק את חיבור האינטרנט ונסה שנית.
+  </div>
+
+  <div class="results-container" id="resultsContainer">
+    <div class="results-header">
+      <h2>מקורות שנמצאו</h2>
+      <span class="results-count" id="resultsCount"></span>
+    </div>
+
+    <!-- Export & Share toolbar -->
+    <div class="export-toolbar" id="exportToolbar">
+      <span class="export-label">ייצוא ושיתוף:</span>
+      <div class="export-actions">
+        <button class="export-btn" onclick="exportPDF()" title="ייצא כ-PDF">
+          <span class="export-icon">📄</span> PDF
+        </button>
+        <button class="export-btn" onclick="exportWord()" title="ייצא כ-Word">
+          <span class="export-icon">📝</span> Word
+        </button>
+        <button class="export-btn export-btn-green" onclick="exportGoogleDocs()" title="פתח ב-Google Docs">
+          <svg width="14" height="14" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;vertical-align:middle">
+            <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+            <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+            <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+            <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+            <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+            <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+          </svg> Google Docs
+        </button>
+        <button class="export-btn export-btn-slides" onclick="exportPresentation()" title="צור מצגת">
+          <span class="export-icon">🎞️</span> מצגת
+        </button>
+        <div class="export-divider"></div>
+        <button class="export-btn export-btn-share" onclick="shareResults()" title="שתף תוצאות">
+          <span class="export-icon">🔗</span> שתף
+        </button>
+        <button class="export-btn export-btn-copy-all" onclick="copyAllSources()" title="העתק הכל">
+          <span class="export-icon">📋</span> העתק הכל
+        </button>
+      </div>
+    </div>
+
+    <div id="resultsList"></div>
+  </div>
+
+</div>
+
+<footer class="app-footer">
+  כלי עזר לתכנית מנהיגות חרדית · המקורות מופקים בסיוע בינה מלאכותית ויש לאמתם
+</footer>
+
+<!-- Share toast -->
+<div class="share-toast" id="shareToast"></div>
+
+<!-- Export loading overlay -->
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-overlay-box">
+    <div class="export-overlay-spinner"></div>
+    <div class="export-overlay-text" id="exportOverlayText">מכין קובץ...</div>
+  </div>
+</div>
+
+<script>
+const CATEGORY_ICONS = {
+  'תורה': 'תו',
+  'נביאים': 'נב',
+  'כתובים': 'כת',
+  'תלמוד': 'תל',
+  'מדרש': 'מד',
+  'הלכה': 'הל',
+  'מחשבה': 'מח',
+  'חסידות': 'חס',
+  'מוסר': 'מו',
+  'פוסקים': 'פס',
+  'אגרות משה': 'אמ',
+  'HebrewBooks': 'הב',
+};
+
+function hebrewBooksUrl(src) {
+  // Use hebrewbooks_search field if provided, otherwise fall back to title
+  const query = src.hebrewbooks_search || src.title;
+  if (!query || query === 'null') return null;
+  return `https://hebrewbooks.org/search.aspx?req=${encodeURIComponent(query)}&searchtype=0`;
+}
+
+function selectTag(el) {
+  el.classList.toggle('active');
+  const activeTags = [...document.querySelectorAll('.tag.active')].map(t => t.textContent).join(', ');
+  const desc = document.getElementById('projectDesc');
+  if (!desc.value || desc.dataset.fromTag) {
+    desc.value = activeTags ? `הפרויקט עוסק בנושאים: ${activeTags}` : '';
+    desc.dataset.fromTag = activeTags ? '1' : '';
+  }
+}
+
+async function findSources() {
+  const projectTitle = document.getElementById('projectTitle').value.trim();
+  const projectDesc = document.getElementById('projectDesc').value.trim();
+  const authorName = document.getElementById('authorName').value.trim();
+
+  if (!projectTitle && !projectDesc) {
+    alert('אנא הכנס כותרת פרויקט או תיאור נושא');
+    return;
+  }
+
+  const btn = document.getElementById('searchBtn');
+  btn.disabled = true;
+  document.getElementById('loadingState').classList.add('visible');
+  document.getElementById('resultsContainer').classList.remove('visible');
+  document.getElementById('errorState').classList.remove('visible');
+
+  const selectedTypes = [...document.querySelectorAll('input[name="sourceType"]:checked')].map(i => i.value);
+  if (selectedTypes.length === 0) { alert('אנא בחר לפחות סוג מקור אחד'); btn.disabled = false; document.getElementById('loadingState').classList.remove('visible'); return; }
+
+  const igrotMoshe = selectedTypes.includes('אגרות משה');
+  const hebrewBooks = selectedTypes.includes('ספרי HebrewBooks');
+  const otherTypes = selectedTypes.filter(t => t !== 'אגרות משה' && t !== 'ספרי HebrewBooks');
+
+  let typesNote = '';
+  if (otherTypes.length > 0) typesNote += `\nספק מקורות מהסוגים הבאים: ${otherTypes.join(', ')}.`;
+  if (igrotMoshe) typesNote += `\nחובה לכלול לפחות מקור אחד מתוך שו"ת אגרות משה של הרב משה פיינשטיין (ציין את החלק והסימן המדויק, לדוגמה: אגרות משה, אורח חיים חלק א סימן כה). אגרות משה הוא ספר תשובות הלכתיות מרכזי — בחר תשובה הרלוונטית ישירות לנושא הפרויקט.`;
+  if (hebrewBooks) typesNote += `\nחובה לכלול לפחות מקור אחד מספרי קודש הנמצאים במאגר hebrewbooks.org — כגון ספרי שו"ת, מוסר, חסידות, מחשבה, פוסקים קלאסיים ואחרונים. עבור כל מקור כזה, הוסף בשדה "hebrewbooks_search" את שם הספר לחיפוש באתר.`;
+
+  const textAttachment = (attachedFileType === 'text' && window._attachedText)
+    ? `\n\nתוכן הפרויקט:\n${window._attachedText}`
+    : '';
+  const fileNote = attachedFileBase64 ? '\nקובץ הפרויקט המלא מצורף — השתמש בתוכנו לאיתור מקורות מדויקים.' : (textAttachment ? '\nתוכן הפרויקט מצורף למטה — השתמש בו לאיתור מקורות מדויקים.' : '');
+
+  const prompt = `אתה מומחה למקורות יהודיים תורניים. ענה רק ב-JSON תקין, ללא backticks וללא כל טקסט נוסף.
+
+נושא הפרויקט: ${projectTitle || ''} ${projectDesc || ''}${fileNote}${typesNote}
+
+החזר בדיוק 4 מקורות תורניים רלוונטיים. חשוב מאוד: שדה "sefaria_ref" חייב להיות מזהה תקני של ספריא באנגלית (לדוגמה: "Berakhot.55a", "Genesis.1.1", "Pirkei_Avot.1.1", "Mishnah_Sanhedrin.4.5").
+עבור שדה "hebrewbooks_search" — הכנס את שם הספר בעברית כפי שיש לחפש אותו ב-hebrewbooks.org (לדוגמה: "נפש החיים", "חפץ חיים", "ספר החינוך"). אם המקור הוא פסוק מהתנ"ך בלבד, הכנס null.
+כל שדה טקסט חייב להכיל בין 20 ל-200 מילים: quote בין 20-50 מילים, explanation בין 30-100 מילים, connection בין 30-100 מילים.
+
+{"sources":[{"title":"...","reference":"...","sefaria_ref":"...","hebrewbooks_search":"שם הספר לחיפוש או null","category":"תורה|נביאים|כתובים|תלמוד|מדרש|הלכה|מחשבה|חסידות|מוסר|פוסקים|אגרות משה|HebrewBooks","quote":"...","explanation":"...","connection":"..."}]}${textAttachment}`;
+
+  try {
+    // Build message content
+    let userContent = [];
+
+    // Always include Igrot Moshe PDF when selected
+    if (igrotMoshe) {
+      userContent.push({
+        type: "document",
+        source: {
+          type: "url",
+          url: "https://or-breslev.co.il/wp-content/uploads/%D7%A9%D7%95%D7%AA-%D7%90%D7%92%D7%A8%D7%95%D7%AA-%D7%9E%D7%A9%D7%94.pdf"
+        },
+        title: "שו\"ת אגרות משה — הרב משה פיינשטיין",
+        cache_control: { type: "ephemeral" }
+      });
+    }
+
+    // Add user-attached file if exists
+    if (attachedFileBase64 && attachedFileType === 'pdf') {
+      userContent.push({ type: "document", source: { type: "base64", media_type: "application/pdf", data: attachedFileBase64 } });
+    }
+
+    userContent.push({ type: "text", text: prompt });
+
+    // If no documents, send as plain string for efficiency
+    if (userContent.length === 1) userContent = prompt;
+
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 4000,
+        messages: [{ role: "user", content: userContent }]
+      })
+    });
+
+    if (!response.ok) throw new Error('API error');
+
+    const data = await response.json();
+    const text = data.content.map(i => i.text || '').join('');
+    let clean = text.replace(/```json|```/g, '').trim();
+
+    // Robust JSON repair: close any truncated JSON
+    const openBraces = (clean.match(/{/g) || []).length;
+    const closeBraces = (clean.match(/}/g) || []).length;
+    const openBrackets = (clean.match(/\[/g) || []).length;
+    const closeBrackets = (clean.match(/\]/g) || []).length;
+
+    // Truncate at last complete object if JSON is broken
+    if (openBraces !== closeBraces || openBrackets !== closeBrackets) {
+      // Find last complete source object
+      const lastGoodClose = clean.lastIndexOf('}');
+      if (lastGoodClose > 0) {
+        clean = clean.substring(0, lastGoodClose + 1);
+        // Re-close arrays/objects
+        const ob2 = (clean.match(/{/g) || []).length;
+        const cb2 = (clean.match(/}/g) || []).length;
+        const ob3 = (clean.match(/\[/g) || []).length;
+        const cb3 = (clean.match(/\]/g) || []).length;
+        clean += ']}'.repeat(ob3 - cb3) + '}'.repeat(ob2 - cb2 - (ob3 - cb3));
+      }
+    }
+
+    const parsed = JSON.parse(clean);
+
+    await displayResults(parsed.sources, projectTitle || projectDesc);
+  } catch (e) {
+    const errEl = document.getElementById('errorState');
+    errEl.textContent = `שגיאה: ${e.message}. אנא נסה שנית.`;
+    errEl.classList.add('visible');
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+    document.getElementById('loadingState').classList.remove('visible');
+  }
+}
+
+function sefariaUrl(ref) {
+  if (!ref) return null;
+  return `https://www.sefaria.org.il/${encodeURIComponent(ref.replace(/ /g, '_'))}?lang=he`;
+}
+
+async function fetchSefariaText(ref) {
+  if (!ref) return null;
+  try {
+    const r = await fetch(`https://www.sefaria.org/api/v3/texts/${encodeURIComponent(ref)}?version=primary&return_format=strip_only_footnotes`);
+    if (!r.ok) return null;
+    const d = await r.json();
+    // Try to get Hebrew text
+    const he = d?.versions?.find(v => v.language === 'he');
+    if (he?.text) {
+      const t = Array.isArray(he.text) ? he.text.flat(3).join(' ') : he.text;
+      return t.replace(/<[^>]+>/g, '').substring(0, 300);
+    }
+    return null;
+  } catch { return null; }
+}
+
+async function displayResults(sources, topic) {
+  const container = document.getElementById('resultsContainer');
+  const list = document.getElementById('resultsList');
+  const count = document.getElementById('resultsCount');
+
+  count.textContent = `${sources.length} מקורות`;
+  list.innerHTML = '';
+
+  // Enrich with Sefaria in parallel
+  const sefariaTexts = await Promise.all(sources.map(s => fetchSefariaText(s.sefaria_ref)));
+
+  sources.forEach((src, i) => {
+    const iconText = CATEGORY_ICONS[src.category] || src.category?.slice(0,2) || '—';
+    const delay = i * 80;
+    const sUrl = sefariaUrl(src.sefaria_ref);
+    const sefariaQuote = sefariaTexts[i];
+
+    const card = document.createElement('div');
+    card.className = 'source-card';
+    card.style.animationDelay = `${delay}ms`;
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="source-icon">${iconText}</div>
+        <div class="source-meta">
+          <div class="source-title">${src.title}</div>
+          <div class="source-ref">${src.reference}</div>
+        </div>
+        <span class="source-type-badge">${src.category}</span>
+      </div>
+      <div class="card-body">
+        ${sefariaQuote ? `
+          <div class="sefaria-quote-block">
+            <div class="sefaria-badge"><img src="https://www.sefaria.org/static/img/logo.svg" height="14" style="filter:brightness(0) invert(0.7); vertical-align:middle; margin-left:4px;">טקסט מספריא</div>
+            <div class="quote-block sefaria-text">${sefariaQuote}</div>
+          </div>` : src.quote ? `<div class="quote-block">"${src.quote}"</div>` : ''}
+        <div class="explanation">${src.explanation}</div>
+        <div class="connection-block">
+          <div class="connection-label">קשר לפרויקט</div>
+          <div class="connection-text">${src.connection}</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        ${sUrl ? `<a class="sefaria-link-btn" href="${sUrl}" target="_blank" rel="noopener">
+          <img src="https://www.sefaria.org/static/img/logo.svg" height="14" style="filter:sepia(1) saturate(3) hue-rotate(60deg); vertical-align:middle; margin-left:5px;">פתח בספריא
+        </a>` : ''}
+        ${hebrewBooksUrl(src) ? `<a class="hebrewbooks-link-btn" href="${hebrewBooksUrl(src)}" target="_blank" rel="noopener">
+          📚 חפש ב-HebrewBooks
+        </a>` : ''}
+        <button class="copy-btn" onclick="copySource(this, ${i})">📋 העתק מקור</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+
+  window._sources = sources;
+  container.classList.add('visible');
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copySource(btn, idx) {
+  const src = window._sources[idx];
+  const text = `מקור: ${src.title}\nמקום: ${src.reference}\nציטוט: "${src.quote}"\nהסבר: ${src.explanation}\nקשר לפרויקט: ${src.connection}`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ הועתק!';
+    setTimeout(() => btn.textContent = '📋 העתק מקור', 2000);
+  });
+}
+
+// File handling
+let attachedFile = null;
+let attachedFileBase64 = null;
+let attachedFileType = null;
+
+function handleDragOver(e) {
+  e.preventDefault();
+  document.querySelector('.vision-wrapper').classList.add('drag-over');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.querySelector('.vision-wrapper').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) processFile(file);
+}
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) processFile(file);
+}
+
+function processFile(file) {
+  const allowed = ['application/pdf',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/msword'];
+  if (!allowed.includes(file.type) && !file.name.match(/\.(pdf|docx|doc)$/i)) {
+    alert('ניתן לצרף קבצי PDF או Word בלבד');
+    return;
+  }
+  attachedFile = file;
+  attachedFileType = file.type.includes('pdf') || file.name.endsWith('.pdf') ? 'pdf' : 'docx';
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    attachedFileBase64 = e.target.result.split(',')[1];
+    document.getElementById('attachToolbar').style.display = 'none';
+    document.getElementById('fileAttached').style.display = 'flex';
+    document.getElementById('fileAttached').querySelector('.file-icon').textContent = '📄';
+    document.getElementById('fileName').textContent = file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeFile() {
+  attachedFile = null;
+  attachedFileBase64 = null;
+  attachedFileType = null;
+  window._attachedText = null;
+  document.getElementById('fileInput').value = '';
+  document.getElementById('attachToolbar').style.display = 'flex';
+  document.getElementById('fileAttached').style.display = 'none';
+}
+
+// Google Drive modal
+function openGdriveModal() {
+  document.getElementById('gdriveOverlay').classList.add('open');
+  document.getElementById('gdriveUrl').value = '';
+  document.getElementById('gdriveStatus').textContent = '';
+  document.getElementById('gdriveStatus').className = 'gdrive-status';
+  document.getElementById('gdriveFetchBtn').disabled = false;
+  document.getElementById('gdriveText').value = '';
+  document.getElementById('gdriveStatus2').textContent = '';
+  showStep(1);
+}
+
+function closeGdriveModal() {
+  document.getElementById('gdriveOverlay').classList.remove('open');
+}
+
+function extractGdriveFileId(url) {
+  const patterns = [
+    /\/file\/d\/([a-zA-Z0-9_-]+)/,
+    /[?&]id=([a-zA-Z0-9_-]+)/,
+    /\/document\/d\/([a-zA-Z0-9_-]+)/,
+    /\/presentation\/d\/([a-zA-Z0-9_-]+)/,
+  ];
+  for (const p of patterns) {
+    const m = url.match(p);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+function showStep(n) {
+  document.getElementById('gdriveStep1').classList.toggle('active', n === 1);
+  document.getElementById('gdriveStep2').classList.toggle('active', n === 2);
+}
+
+async function fetchGdriveFile() {
+  const url = document.getElementById('gdriveUrl').value.trim();
+  const status = document.getElementById('gdriveStatus');
+  const btn = document.getElementById('gdriveFetchBtn');
+
+  if (!url) { status.textContent = 'אנא הדבק קישור'; status.className = 'gdrive-status error'; return; }
+
+  const fileId = extractGdriveFileId(url);
+  if (!fileId) { status.textContent = 'קישור לא תקין — ודא שהוא מ-Google Drive'; status.className = 'gdrive-status error'; return; }
+
+  const isGoogleDoc = url.includes('docs.google.com/document') || url.includes('docs.google.com/');
+
+  // Google Docs cannot be fetched directly — skip to text paste immediately
+  if (isGoogleDoc) {
+    const openUrl = `https://docs.google.com/document/d/${fileId}/edit`;
+    document.getElementById('gdriveOpenLink').href = openUrl;
+    showStep(2);
+    return;
+  }
+
+  btn.disabled = true;
+  status.textContent = 'מנסה לטעון קובץ...';
+  status.className = 'gdrive-status';
+
+  const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+  try {
+    const response = await fetch(downloadUrl);
+    if (!response.ok) throw new Error(`${response.status}`);
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('text/html')) throw new Error('blocked');
+    const blob = await response.blob();
+    const detectedType = (contentType.includes('wordprocessingml') || contentType.includes('msword')) ? 'docx' : 'pdf';
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      attachedFileBase64 = e.target.result.split(',')[1];
+      attachedFileType = detectedType;
+      document.getElementById('attachToolbar').style.display = 'none';
+      document.getElementById('fileAttached').style.display = 'flex';
+      document.getElementById('fileAttached').querySelector('.file-icon').textContent = '☁️';
+      document.getElementById('fileName').textContent = `קובץ Drive.${detectedType}`;
+      status.textContent = '✓ הקובץ נטען בהצלחה!';
+      status.className = 'gdrive-status success';
+      setTimeout(closeGdriveModal, 1200);
+    };
+    reader.readAsDataURL(blob);
+  } catch (err) {
+    btn.disabled = false;
+    document.getElementById('gdriveOpenLink').href = `https://drive.google.com/file/d/${fileId}/view`;
+    showStep(2);
+  }
+}
+
+function attachGdriveText() {
+  const text = document.getElementById('gdriveText').value.trim();
+  const status2 = document.getElementById('gdriveStatus2');
+  if (!text || text.length < 20) {
+    status2.textContent = 'אנא הדבק טקסט מהפרויקט (לפחות 20 תווים)';
+    status2.className = 'gdrive-status error';
+    return;
+  }
+  // Store as plain text — will be injected into the prompt
+  attachedFileBase64 = null;
+  attachedFileType = 'text';
+  window._attachedText = text;
+
+  document.getElementById('attachToolbar').style.display = 'none';
+  document.getElementById('fileAttached').style.display = 'flex';
+  document.getElementById('fileAttached').querySelector('.file-icon').textContent = '☁️';
+  document.getElementById('fileName').textContent = 'טקסט מ-Google Drive';
+  status2.textContent = '✓ הטקסט צורף!';
+  status2.className = 'gdrive-status success';
+  setTimeout(closeGdriveModal, 1000);
+}
+
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.ctrlKey) findSources();
+});
+
+// ─── EXPORT & SHARE HELPERS ───────────────────────────────────────
+
+function showToast(msg, duration = 3000) {
+  const t = document.getElementById('shareToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+function showExportOverlay(msg) {
+  document.getElementById('exportOverlayText').textContent = msg;
+  document.getElementById('exportOverlay').classList.add('show');
+}
+
+function hideExportOverlay() {
+  document.getElementById('exportOverlay').classList.remove('show');
+}
+
+function buildSourcesText(plain = false) {
+  const srcs = window._sources || [];
+  const project = document.getElementById('projectTitle').value || '';
+  const author  = document.getElementById('authorName').value  || '';
+  let out = '';
+  if (plain) {
+    out += `מקורות תורניים למעשה המנהיגות\n`;
+    if (project) out += `פרויקט: ${project}\n`;
+    if (author)  out += `שם: ${author}\n`;
+    out += `\n${'─'.repeat(40)}\n\n`;
+    srcs.forEach((s, i) => {
+      out += `${i+1}. ${s.title} — ${s.reference}\n`;
+      if (s.quote) out += `"${s.quote}"\n`;
+      out += `\nהסבר: ${s.explanation}\n`;
+      out += `קשר לפרויקט: ${s.connection}\n\n`;
+      out += `${'─'.repeat(30)}\n\n`;
+    });
+  }
+  return out;
+}
+
+// ─── COPY ALL ────────────────────────────────────────────────────
+function copyAllSources() {
+  const text = buildSourcesText(true);
+  navigator.clipboard.writeText(text).then(() => showToast('✓ כל המקורות הועתקו ללוח'));
+}
+
+// ─── SHARE ───────────────────────────────────────────────────────
+async function shareResults() {
+  const srcs = window._sources || [];
+  const project = document.getElementById('projectTitle').value || 'מקורות תורניים';
+  const text = buildSourcesText(true);
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: project, text });
+      return;
+    } catch(e) {}
+  }
+  // Fallback — copy link + content
+  await navigator.clipboard.writeText(text);
+  showToast('🔗 התוצאות הועתקו — ניתן להדביק בכל מקום');
+}
+
+// ─── PDF EXPORT ──────────────────────────────────────────────────
+function exportPDF() {
+  const srcs = window._sources || [];
+  if (!srcs.length) { showToast('אין תוצאות לייצא'); return; }
+
+  showExportOverlay('מכין PDF...');
+
+  const project = document.getElementById('projectTitle').value || '';
+  const author  = document.getElementById('authorName').value  || '';
+
+  const html = `<!DOCTYPE html><html dir="rtl" lang="he">
+<head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Heebo',sans-serif; color:#1E3040; padding:40px; line-height:1.7; }
+  h1 { font-family:'Noto Serif Hebrew',serif; color:#1C6E7D; font-size:1.6rem; border-bottom:2px solid #2A8C9E; padding-bottom:0.5rem; }
+  .meta { color:#6E8A99; font-size:0.85rem; margin-bottom:2rem; }
+  .card { border:1px solid #DDE8EC; border-radius:10px; padding:1.2rem 1.5rem; margin-bottom:1.5rem; break-inside:avoid; }
+  .title { font-family:'Noto Serif Hebrew',serif; font-size:1.1rem; font-weight:700; color:#1E3040; }
+  .ref { color:#2A8C9E; font-size:0.85rem; font-weight:600; margin-bottom:0.7rem; }
+  .quote { border-right:3px solid #2A8C9E; padding-right:1rem; color:#3D5A6E; font-style:italic; margin-bottom:0.7rem; background:#E6F4F7; padding:0.6rem 1rem; border-radius:4px; }
+  .section-label { font-size:0.72rem; font-weight:700; color:#2A8C9E; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem; }
+  .explanation { color:#3D5A6E; font-size:0.9rem; margin-bottom:0.7rem; }
+  .connection { background:#E6F4F7; border-radius:6px; padding:0.6rem 0.9rem; font-size:0.88rem; }
+  .footer { text-align:center; color:#6E8A99; font-size:0.75rem; margin-top:3rem; border-top:1px solid #DDE8EC; padding-top:1rem; }
+</style></head><body>
+<h1>מקורות תורניים למעשה המנהיגות</h1>
+<div class="meta">${project ? `פרויקט: <b>${project}</b> · ` : ''}${author ? `שם: <b>${author}</b> · ` : ''}${new Date().toLocaleDateString('he-IL')}</div>
+${srcs.map((s,i) => `
+<div class="card">
+  <div class="title">${i+1}. ${s.title}</div>
+  <div class="ref">${s.reference}</div>
+  ${s.quote ? `<div class="quote">"${s.quote}"</div>` : ''}
+  <div class="section-label">הסבר</div>
+  <div class="explanation">${s.explanation}</div>
+  <div class="section-label">קשר לפרויקט</div>
+  <div class="connection">${s.connection}</div>
+</div>`).join('')}
+<div class="footer">הופק באמצעות מנוע מקורות תורניים למנהיגות · המקורות מופקים בסיוע בינה מלאכותית ויש לאמתם</div>
+</body></html>`;
+
+  const w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+  hideExportOverlay();
+  setTimeout(() => { w.focus(); w.print(); }, 800);
+}
+
+// ─── WORD EXPORT ─────────────────────────────────────────────────
+function exportWord() {
+  const srcs = window._sources || [];
+  if (!srcs.length) { showToast('אין תוצאות לייצא'); return; }
+
+  showExportOverlay('מכין קובץ Word...');
+
+  const project = document.getElementById('projectTitle').value || '';
+  const author  = document.getElementById('authorName').value  || '';
+
+  const rtf = `{\\rtf1\\ansi\\deff0
+{\\fonttbl{\\f0 David;}{\\f1 Arial;}}
+{\\colortbl ;\\red28\\green110\\blue125;\\red62\\green90\\blue110;\\red42\\green140\\blue158;}
+\\paperw12240\\paperh15840\\margl1800\\margr1800\\margt1440\\margb1440
+\\rtlpar\\qr
+{\\f0\\fs36\\b\\cf1 \\u1502?\\u1511?\\u1493?\\u1512?\\u1493?\\u1514? \\u1514?\\u1493?\\u1512?\\u1504?\\u1497?\\u1497?\\u1501? \\u1500?\\u1502?\\u1506?\\u1513?\\u1492? \\u1492?\\u1502?\\u1504?\\u1492?\\u1497?\\u1490?\\u1493?\\u1514?\\par}
+{\\f1\\fs20\\cf2 ${project}${author ? ' | ' + author : ''}\\par}
+\\par
+${srcs.map((s,i) => `{\\f0\\fs26\\b\\cf1 ${i+1}. ${escRtf(s.title)}\\par}
+{\\f1\\fs20\\cf3 ${escRtf(s.reference)}\\par}
+${s.quote ? `{\\f0\\fs22\\i "${escRtf(s.quote)}"\\par}` : ''}
+\\par
+{\\f1\\fs20\\b \\u1492?\\u1505?\\u1489?\\u1512?:\\par}
+{\\f1\\fs20 ${escRtf(s.explanation)}\\par}
+\\par
+{\\f1\\fs20\\b \\u1511?\\u1513?\\u1512? \\u1500?\\u1508?\\u1512?\\u1493?\\u1497?\\u1511?\\u1496?:\\par}
+{\\f1\\fs20 ${escRtf(s.connection)}\\par}
+\\par\\line\\par
+`).join('')}
+{\\f1\\fs18\\cf2 \\u1492?\\u1493?\\u1508?\\u1511? \\u1489?\\u1488?\\u1502?\\u1510?\\u1506?\\u1493?\\u1514? \\u1502?\\u1504?\\u1493?\\u1506? \\u1502?\\u1511?\\u1493?\\u1512?\\u1493?\\u1514? \\u1514?\\u1493?\\u1512?\\u1504?\\u1497?\\u1497?\\u1501? \\u1500?\\u1502?\\u1504?\\u1492?\\u1497?\\u1490?\\u1493?\\u1514?\\par}
+}`;
+
+  // Use HTML download instead — better Hebrew support
+  const docHtml = buildWordHTML(srcs, project, author);
+  const blob = new Blob([docHtml], { type: 'application/msword;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `מקורות-תורניים-${project || 'פרויקט'}.doc`;
+  a.click();
+  URL.revokeObjectURL(url);
+  hideExportOverlay();
+  showToast('✓ קובץ Word הורד בהצלחה');
+}
+
+function escRtf(s) {
+  return (s || '').replace(/\\/g,'\\\\').replace(/[{}]/g,'\\$&');
+}
+
+function buildWordHTML(srcs, project, author) {
+  return `<html xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:w="urn:schemas-microsoft-com:office:word"
+    xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8">
+<style>
+  body { font-family: 'David', serif; direction: rtl; color: #1E3040; margin: 2cm; }
+  h1 { color: #1C6E7D; font-size: 22pt; border-bottom: 2pt solid #2A8C9E; padding-bottom: 6pt; }
+  .meta { color: #6E8A99; font-size: 11pt; margin-bottom: 18pt; }
+  .card { border: 1pt solid #DDE8EC; padding: 14pt; margin-bottom: 18pt; }
+  .title { font-size: 14pt; font-weight: bold; color: #1E3040; }
+  .ref { color: #2A8C9E; font-size: 11pt; margin-bottom: 8pt; }
+  .quote { border-right: 3pt solid #2A8C9E; padding-right: 10pt; color: #3D5A6E; font-style: italic; background: #E6F4F7; padding: 6pt 10pt; margin-bottom: 8pt; }
+  .label { font-size: 9pt; font-weight: bold; color: #2A8C9E; text-transform: uppercase; margin-bottom: 3pt; }
+  .explanation { color: #3D5A6E; font-size: 11pt; margin-bottom: 8pt; }
+  .connection { background: #E6F4F7; padding: 7pt 10pt; font-size: 11pt; }
+  .footer { text-align: center; color: #6E8A99; font-size: 9pt; margin-top: 24pt; border-top: 1pt solid #DDE8EC; padding-top: 8pt; }
+</style></head><body>
+<h1>מקורות תורניים למעשה המנהיגות</h1>
+<div class="meta">${project ? `פרויקט: <b>${project}</b>` : ''}${author ? ` | שם: <b>${author}</b>` : ''} | ${new Date().toLocaleDateString('he-IL')}</div>
+${srcs.map((s,i) => `
+<div class="card">
+  <div class="title">${i+1}. ${s.title}</div>
+  <div class="ref">${s.reference}</div>
+  ${s.quote ? `<div class="quote">"${s.quote}"</div>` : ''}
+  <div class="label">הסבר</div>
+  <div class="explanation">${s.explanation}</div>
+  <div class="label">קשר לפרויקט</div>
+  <div class="connection">${s.connection}</div>
+</div>`).join('')}
+<div class="footer">הופק באמצעות מנוע מקורות תורניים למנהיגות · המקורות מופקים בסיוע בינה מלאכותית ויש לאמתם</div>
+</body></html>`;
+}
+
+// ─── GOOGLE DOCS EXPORT ──────────────────────────────────────────
+function exportGoogleDocs() {
+  const srcs = window._sources || [];
+  if (!srcs.length) { showToast('אין תוצאות לייצא'); return; }
+
+  showExportOverlay('מכין עבור Google Docs...');
+
+  const project = document.getElementById('projectTitle').value || '';
+  const author  = document.getElementById('authorName').value  || '';
+
+  const text = buildSourcesText(true);
+  navigator.clipboard.writeText(text).then(() => {
+    hideExportOverlay();
+    const docsUrl = 'https://docs.google.com/document/create';
+    window.open(docsUrl, '_blank');
+    showToast('✓ התוצאות הועתקו — פתח מסמך חדש והדבק (Ctrl+V)', 5000);
+  }).catch(() => {
+    hideExportOverlay();
+    showToast('⚠️ לא ניתן להעתיק — נסה שוב');
+  });
+}
+
+// ─── PRESENTATION EXPORT ─────────────────────────────────────────
+function exportPresentation() {
+  const srcs = window._sources || [];
+  if (!srcs.length) { showToast('אין תוצאות לייצא'); return; }
+
+  showExportOverlay('בונה מצגת HTML...');
+
+  const project = document.getElementById('projectTitle').value || 'פרויקטי';
+  const author  = document.getElementById('authorName').value  || '';
+
+  const slides = [
+    // Title slide
+    `<section class="slide slide-title">
+      <div class="slide-inner">
+        <div class="slide-label">מקורות תורניים למעשה המנהיגות</div>
+        <h1>${project}</h1>
+        ${author ? `<div class="slide-author">${author}</div>` : ''}
+        <div class="slide-date">${new Date().toLocaleDateString('he-IL')}</div>
+      </div>
+    </section>`,
+    // Source slides
+    ...srcs.map((s, i) => `
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="slide-num">${i+1} / ${srcs.length}</div>
+        <div class="slide-category">${s.category}</div>
+        <h2>${s.title}</h2>
+        <div class="slide-ref">${s.reference}</div>
+        ${s.quote ? `<div class="slide-quote">"${s.quote}"</div>` : ''}
+        <div class="slide-section">הסבר</div>
+        <div class="slide-text">${s.explanation}</div>
+        <div class="slide-connection">
+          <span class="slide-connection-label">קשר לפרויקט: </span>${s.connection}
+        </div>
+      </div>
+    </section>`),
+    // End slide
+    `<section class="slide slide-end">
+      <div class="slide-inner">
+        <div class="slide-label">סיכום</div>
+        <h1>נמצאו ${srcs.length} מקורות תורניים</h1>
+        <div class="slide-author">לפרויקט: ${project}</div>
+        <div style="margin-top:1.5rem; font-size:0.8rem; color:rgba(255,255,255,0.5);">המקורות מופקים בסיוע בינה מלאכותית ויש לאמתם</div>
+      </div>
+    </section>`
+  ];
+
+  const presHTML = `<!DOCTYPE html><html dir="rtl" lang="he">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${project} — מקורות תורניים</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0D1F2D;font-family:'Heebo',sans-serif;color:white;height:100vh;overflow:hidden}
+  .slides-wrap{width:100%;height:100vh;position:relative}
+  .slide{display:none;width:100%;height:100vh;position:absolute;inset:0;background:linear-gradient(135deg,#0D2B38 0%,#0A1E2D 100%);padding:0}
+  .slide.active{display:flex;align-items:center;justify-content:center}
+  .slide-inner{max-width:900px;width:100%;padding:3rem 4rem;direction:rtl}
+  .slide-title .slide-inner{text-align:center}
+  .slide-title h1{font-family:'Noto Serif Hebrew',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:#3AAFC4;line-height:1.2;margin:1rem 0}
+  .slide-label{font-size:0.8rem;color:rgba(58,175,196,0.6);text-transform:uppercase;letter-spacing:0.12em;font-weight:600}
+  .slide-author{color:rgba(255,255,255,0.6);font-size:1.1rem;margin-top:0.5rem}
+  .slide-date{color:rgba(255,255,255,0.35);font-size:0.85rem;margin-top:0.5rem}
+  .slide-num{font-size:0.78rem;color:rgba(58,175,196,0.5);font-weight:600;margin-bottom:0.5rem}
+  .slide-category{display:inline-block;background:rgba(58,175,196,0.15);border:1px solid rgba(58,175,196,0.3);border-radius:6px;color:#3AAFC4;font-size:0.75rem;font-weight:700;padding:0.2rem 0.7rem;margin-bottom:0.6rem}
+  .slide h2{font-family:'Noto Serif Hebrew',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:white;margin-bottom:0.3rem;line-height:1.3}
+  .slide-ref{color:#3AAFC4;font-size:0.9rem;font-weight:600;margin-bottom:0.8rem}
+  .slide-quote{background:rgba(58,175,196,0.08);border-right:3px solid #3AAFC4;padding:0.7rem 1rem;color:rgba(255,255,255,0.85);font-style:italic;font-size:1rem;margin-bottom:0.9rem;border-radius:4px}
+  .slide-section{font-size:0.7rem;color:rgba(58,175,196,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.3rem}
+  .slide-text{color:rgba(255,255,255,0.75);font-size:0.92rem;line-height:1.6;margin-bottom:0.8rem}
+  .slide-connection{background:rgba(74,155,111,0.1);border:1px solid rgba(74,155,111,0.25);border-radius:8px;padding:0.65rem 0.9rem;font-size:0.88rem;color:rgba(255,255,255,0.8)}
+  .slide-connection-label{color:#6DBF8F;font-weight:700}
+  .slide-end{background:linear-gradient(135deg,#0D3D4A 0%,#0A2535 100%)}
+  .slide-end h1{font-family:'Noto Serif Hebrew',serif;font-size:clamp(1.8rem,4vw,3rem);color:white;margin:1rem 0}
+  .nav{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:0.75rem;align-items:center;z-index:10}
+  .nav-btn{background:rgba(58,175,196,0.15);border:1px solid rgba(58,175,196,0.3);border-radius:8px;color:#3AAFC4;cursor:pointer;font-size:0.9rem;padding:0.5rem 1.2rem;transition:all 0.2s;font-family:'Heebo',sans-serif}
+  .nav-btn:hover{background:rgba(58,175,196,0.3)}
+  .nav-btn:disabled{opacity:0.3;cursor:not-allowed}
+  .slide-counter{color:rgba(255,255,255,0.4);font-size:0.82rem;min-width:60px;text-align:center}
+  .progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(58,175,196,0.15)}
+  .progress-bar{height:100%;background:#3AAFC4;transition:width 0.3s}
+</style></head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slides-wrap" id="slidesWrap">
+  ${slides.join('\n')}
+</div>
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">→ הקודם</button>
+  <span class="slide-counter" id="slideCounter"></span>
+  <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">הבא ←</button>
+</div>
+<script>
+  let cur = 0;
+  const all = document.querySelectorAll('.slide');
+  function show(n) {
+    all.forEach((s,i) => s.classList.toggle('active', i===n));
+    document.getElementById('slideCounter').textContent = (n+1) + ' / ' + all.length;
+    document.getElementById('prevBtn').disabled = n===0;
+    document.getElementById('nextBtn').disabled = n===all.length-1;
+    document.getElementById('progressBar').style.width = ((n+1)/all.length*100)+'%';
+    cur = n;
+  }
+  function changeSlide(d) { show(Math.max(0,Math.min(all.length-1,cur+d))); }
+  document.addEventListener('keydown', e => {
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown') changeSlide(1);
+    if(e.key==='ArrowRight'||e.key==='ArrowUp') changeSlide(-1);
+  });
+  show(0);
+<\/script>
+</body></html>`;
+
+  const blob = new Blob([presHTML], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `מצגת-${project}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+  hideExportOverlay();
+  showToast('✓ המצגת הורדה — פתח את הקובץ בדפדפן');
+}
+
+</script>
+</body>
+</html>
