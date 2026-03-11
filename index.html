@@ -485,6 +485,47 @@
     line-height: 1.6;
   }
 
+  /* API Key section */
+  .apikey-section {
+    background: var(--teal-pale);
+    border: 1px solid rgba(42,140,158,0.2);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  .apikey-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .apikey-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .apikey-text { flex: 1; min-width: 120px; }
+  .apikey-label { font-size: 0.78rem; font-weight: 700; color: var(--teal-mid); }
+  .apikey-hint { font-size: 0.72rem; color: var(--text-soft); }
+  .apikey-hint a { color: var(--teal); text-decoration: underline; }
+  .apikey-input {
+    flex: 2;
+    min-width: 180px;
+    background: white;
+    border: 1px solid rgba(42,140,158,0.3);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-family: monospace;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.75rem;
+    width: auto;
+  }
+  .apikey-input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(42,140,158,0.12);
+    outline: none;
+  }
+  .apikey-status { font-size: 0.85rem; flex-shrink: 0; }
+
+  /* Hide API key section when running inside claude.ai */
+  .claudeai-mode .apikey-section { display: none; }
+
   /* Export toolbar */
   .export-toolbar {
     display: flex;
@@ -1193,6 +1234,18 @@
       </div>
     </div>
 
+    <div class="apikey-section" id="apikeySection">
+      <div class="apikey-inner">
+        <span class="apikey-icon">🔑</span>
+        <div class="apikey-text">
+          <div class="apikey-label">Anthropic API Key</div>
+          <div class="apikey-hint">נדרש להרצה מחוץ ל-claude.ai · <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">קבל מפתח בחינם</a></div>
+        </div>
+        <input type="password" id="apiKeyInput" class="apikey-input" placeholder="sk-ant-..." dir="ltr" oninput="saveApiKey(this.value)">
+        <span class="apikey-status" id="apikeyStatus"></span>
+      </div>
+    </div>
+
     <button class="search-btn" id="searchBtn" onclick="findSources()">
       🔍 חבר אותי למקורות
     </button>
@@ -1267,6 +1320,36 @@
 </div>
 
 <script>
+// ─── API KEY MANAGEMENT ──────────────────────────────────────────
+// Detect if running inside claude.ai (API key injected automatically)
+const IS_CLAUDE_AI = window.location.hostname.includes('claude.ai') ||
+                     window.location.hostname.includes('anthropic.com') ||
+                     window.location.protocol === 'blob:';
+
+function getApiKey() {
+  if (IS_CLAUDE_AI) return null; // claude.ai injects it automatically
+  return sessionStorage.getItem('anthropic_api_key') || '';
+}
+
+function saveApiKey(val) {
+  sessionStorage.setItem('anthropic_api_key', val.trim());
+  const status = document.getElementById('apikeyStatus');
+  status.textContent = val.trim().startsWith('sk-ant-') ? '✅' : val ? '⚠️' : '';
+}
+
+// Init: hide section on claude.ai, load saved key elsewhere
+document.addEventListener('DOMContentLoaded', () => {
+  if (IS_CLAUDE_AI) {
+    document.querySelector('.input-card').classList.add('claudeai-mode');
+  } else {
+    const saved = sessionStorage.getItem('anthropic_api_key') || '';
+    if (saved) {
+      document.getElementById('apiKeyInput').value = saved;
+      document.getElementById('apikeyStatus').textContent = saved.startsWith('sk-ant-') ? '✅' : '⚠️';
+    }
+  }
+});
+
 const CATEGORY_ICONS = {
   'תורה': 'תו',
   'נביאים': 'נב',
@@ -1306,6 +1389,14 @@ async function findSources() {
 
   if (!projectTitle && !projectDesc) {
     alert('אנא הכנס כותרת פרויקט או תיאור נושא');
+    return;
+  }
+
+  // Validate API key outside claude.ai
+  const apiKey = getApiKey();
+  if (!IS_CLAUDE_AI && !apiKey) {
+    alert('אנא הכנס Anthropic API Key כדי להשתמש באפליקציה');
+    document.getElementById('apiKeyInput').focus();
     return;
   }
 
@@ -1373,7 +1464,8 @@ async function findSources() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "anthropic-dangerous-direct-browser-access": "true"
+        "anthropic-dangerous-direct-browser-access": "true",
+        ...(apiKey ? { "x-api-key": apiKey } : {})
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
@@ -1414,7 +1506,8 @@ async function findSources() {
     await displayResults(parsed.sources, projectTitle || projectDesc);
   } catch (e) {
     const errEl = document.getElementById('errorState');
-    errEl.textContent = `שגיאה: ${e.message}. אנא נסה שנית.`;
+    const msg = e.message.includes('fetch') ? 'שגיאת רשת — ודא שה-API Key תקין ויש חיבור לאינטרנט.' : `שגיאה: ${e.message}`;
+    errEl.textContent = msg + ' אנא נסה שנית.';
     errEl.classList.add('visible');
     console.error(e);
   } finally {
